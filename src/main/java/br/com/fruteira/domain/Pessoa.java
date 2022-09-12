@@ -1,12 +1,22 @@
 package br.com.fruteira.domain;
 
+
 import javax.persistence.Column;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-@SuppressWarnings("serial")
+
 @Entity
 public class Pessoa extends GenericDomain {
+	
+	
+	@ManyToOne
+	@JoinColumn(nullable = false)
+	private Cidade cidade;
+	
+	
 	@Column(length = 50, nullable = false)
 	private String nome;
 	
@@ -31,6 +41,8 @@ public class Pessoa extends GenericDomain {
 	@Column(length = 10, nullable = false)
 	private String complemento;
 	
+	
+	
 	@Column(length = 13, nullable = false)
 	private String telefone;
 
@@ -40,6 +52,20 @@ public class Pessoa extends GenericDomain {
 	@Column(length = 100, nullable = false)
 	private String email;
 
+	
+	
+	
+	
+	
+	public Cidade getCidade() {
+		return cidade;
+	}
+	
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
+	}
+	
+	
 	public String getNome() {
 		return nome;
 	}
@@ -76,9 +102,7 @@ public class Pessoa extends GenericDomain {
 		return numero;
 	}
 
-	public void setNumero(Short numero) {
-		this.numero = numero;
-	}
+	
 
 	public String getBairro() {
 		return bairro;

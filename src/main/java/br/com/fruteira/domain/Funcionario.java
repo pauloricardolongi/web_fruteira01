@@ -2,6 +2,7 @@ package br.com.fruteira.domain;
 
 import java.util.Date;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -18,6 +19,16 @@ public class Funcionario extends GenericDomain {
 	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date dataAdmissao;
+	
+	@Column(nullable = false)
+	@Temporal(TemporalType.DATE)
+	private Date dataFerias;
+	
+	
+	@Column(nullable = false)
+	@Temporal(TemporalType.DATE)
+	private Date dataDemissao;
+	
 	
 	@OneToOne
 	@JoinColumn(nullable = false)
@@ -37,6 +48,20 @@ public class Funcionario extends GenericDomain {
 
 	public void setDataAdmissao(Date dataAdmissao) {
 		this.dataAdmissao = dataAdmissao;
+	}
+	
+	public Date getDataFerias() {
+		return dataFerias;
+	}
+	public void setDataFerias(Date dataFerias) {
+		this.dataFerias = dataFerias;
+	}
+	
+	public Date getDataDemissao() {
+		return dataDemissao;
+	}
+	public void setDataDemissao(Date dataDemissao) {
+		this.dataDemissao = dataDemissao;
 	}
 
 	public Pessoa getPessoa() {
