@@ -17,8 +17,7 @@ public class CidadeDAOTest {
 		Estado estado = estadoDAO.buscar(codigoEstado);
 
 		Cidade cidade = new Cidade();		
-		cidade.setNome("Fortaleza");
-		
+		cidade.setNome("Ivorá");
 		cidade.setEstado(estado);
 
 		CidadeDAO cidadeDAO = new CidadeDAO();		
@@ -44,7 +43,7 @@ public class CidadeDAOTest {
 	@Test
 	@Ignore
 	public void buscar(){
-		Long codigo = 2L;
+		Long codigo = 1L;
 		
 		CidadeDAO cidadeDAO = new CidadeDAO();
 		Cidade cidade = cidadeDAO.buscar(codigo);
@@ -61,7 +60,7 @@ public class CidadeDAOTest {
 	@Test
 	@Ignore
 	public void excluir(){
-		Long codigo = 4L;
+		Long codigo = 3L;
 		
 		CidadeDAO cidadeDAO = new CidadeDAO();
 		Cidade cidade = cidadeDAO.buscar(codigo);
@@ -79,7 +78,7 @@ public class CidadeDAOTest {
 	@Test
 	@Ignore
 	public void editar(){
-		Long codigoCidade = 5L;
+		Long codigoCidade = 1L;
 		Long codigoEstado = 1L;
 		
 		EstadoDAO estadoDAO = new EstadoDAO();
@@ -99,7 +98,7 @@ public class CidadeDAOTest {
 		System.out.println("Sigla do Estado: " + cidade.getEstado().getSigla());
 		System.out.println("Nome do Estado: " + cidade.getEstado().getNome());
 		
-		cidade.setNome("Ibirubá");
+		cidade.setNome("Porto Alegre");
 		cidade.setEstado(estado);
 		
 		cidadeDAO.editar(cidade);
@@ -112,6 +111,5 @@ public class CidadeDAOTest {
 		System.out.println("Nome do Estado: " + cidade.getEstado().getNome());
 	}
 }
-
 
 

@@ -43,8 +43,6 @@ public class GenericDAO<Entidade> {
 		}
 	}
 	
-	
-	
 	public void merge(Entidade entidade) {
 		Session sessao = HibernateUtil.getFabricaDeSessoes().openSession();
 		Transaction transacao = null;
@@ -77,26 +75,6 @@ public class GenericDAO<Entidade> {
 			sessao.close();
 		}
 	}
-	
-	
-	
-	@SuppressWarnings("unchecked")
-	public List<Entidade> listar(String campoOrdenacao) {
-		Session sessao = HibernateUtil.getFabricaDeSessoes().openSession();
-		try {
-			Criteria consulta = sessao.createCriteria(classe);
-			consulta.addOrder(Order.asc(campoOrdenacao));
-			List<Entidade> resultado = consulta.list();
-			return resultado;
-		} catch (RuntimeException erro) {
-			throw erro;
-		} finally {
-			sessao.close();
-		}
-	}
-	
-	
-	
 	
 	
 	@SuppressWarnings("unchecked")
@@ -150,6 +128,4 @@ public class GenericDAO<Entidade> {
 		}
 	}
 
-
-	
-}
+}	

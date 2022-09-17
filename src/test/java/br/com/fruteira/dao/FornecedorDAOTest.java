@@ -13,7 +13,7 @@ public class FornecedorDAOTest {
 	@Ignore
 	public void salvar() {
 		Fornecedor fornecedor = new Fornecedor();
-		fornecedor.setDescricao("Horto_Medianeira");
+		fornecedor.setDescricao("HortoDores");
 
 		FornecedorDAO fornecedorDAO = new FornecedorDAO();
 		fornecedorDAO.salvar(fornecedor);
@@ -22,8 +22,8 @@ public class FornecedorDAOTest {
 	@Test
 	@Ignore
 	public void listar() {
-		FornecedorDAO FornecedorDAO = new FornecedorDAO();
-		List<Fornecedor> resultado = FornecedorDAO.listar();
+		FornecedorDAO fornecedorDAO = new FornecedorDAO();
+		List<Fornecedor> resultado = fornecedorDAO.listar();
 
 		System.out.println("Total de Registros Encontrados: " + resultado.size());
 
@@ -32,11 +32,10 @@ public class FornecedorDAOTest {
 		+ fornecedor.getDescricao());
 		}
 	}
-	
 	@Test
 	@Ignore
 	public void buscar(){
-		Long codigo = 1L;
+		Long codigo = 3L;
 		
 		FornecedorDAO fornecedorDAO = new FornecedorDAO();
 		Fornecedor fornecedor = fornecedorDAO.buscar(codigo);
@@ -45,8 +44,10 @@ public class FornecedorDAOTest {
 			System.out.println("Nenhum registro encontrado");
 		}else{
 			System.out.println("Registro encontrado:");
-			System.out.println( " código fornecedor " + fornecedor.getCodigo() + " - Nome fornecedor: " + fornecedor.getDescricao());
+			System.out.println(fornecedor.getCodigo() + " - " + fornecedor.getDescricao());
 		}
 	}
 }
+	
+	
 

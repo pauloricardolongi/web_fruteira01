@@ -1,6 +1,7 @@
 package br.com.fruteira.domain;
 
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
 
 @SuppressWarnings("serial")

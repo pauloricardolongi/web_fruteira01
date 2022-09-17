@@ -1,6 +1,7 @@
 package br.com.fruteira.dao;
 
 import java.util.List;
+
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -12,8 +13,9 @@ public class EstadoDAOTest {
 	@Ignore
 	public void salvar() {
 		Estado estado = new Estado();
-		estado.setNome("São Paulo");
-		estado.setSigla("SP");
+		estado.setNome("Rio Grande do Sul");
+		estado.setSigla("RS");
+		
 		
 		EstadoDAO estadoDAO = new EstadoDAO();
 		estadoDAO.salvar(estado);
@@ -28,14 +30,15 @@ public class EstadoDAOTest {
 		System.out.println("Total de Registros Encontrados: " + resultado.size());
 
 		for (Estado estado : resultado) {
-			System.out.println(estado.getCodigo() + " - " + estado.getSigla() + " - " + estado.getNome());
+			System.out.println(" código " + estado.getCodigo() +
+					" - " + estado.getNome() +" - "+ estado.getSigla() );
 		}
 	}
 	
 	@Test
 	@Ignore
 	public void buscar(){
-		Long codigo = 3L;
+		Long codigo = 2L;
 		
 		EstadoDAO estadoDAO = new EstadoDAO();
 		Estado estado = estadoDAO.buscar(codigo);
@@ -51,7 +54,7 @@ public class EstadoDAOTest {
 	@Test
 	@Ignore
 	public void excluir(){
-		Long codigo = 2L;
+		Long codigo = 4L;
 		EstadoDAO estadoDAO = new EstadoDAO();
 		Estado estado = estadoDAO.buscar(codigo);
 		
@@ -67,7 +70,7 @@ public class EstadoDAOTest {
 	@Test
 	@Ignore
 	public void editar(){
-		Long codigo = 3L;
+		Long codigo = 4L;
 		EstadoDAO estadoDAO = new EstadoDAO();
 		Estado estado = estadoDAO.buscar(codigo);
 		
@@ -77,8 +80,8 @@ public class EstadoDAOTest {
 			System.out.println("Registro editado - Antes:");
 			System.out.println(estado.getCodigo() + " - " + estado.getSigla() + " - " + estado.getNome());
 			
-			estado.setNome(" Paraná");
-			estado.setSigla("PR");
+			estado.setNome("Paraná");
+			estado.setSigla("pr");
 			estadoDAO.editar(estado);
 			
 			System.out.println("Registro editado - Depois:");

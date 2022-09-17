@@ -29,16 +29,27 @@
 		<!-- Mostra as SQLs Geradas -->
 		<property name="show_sql">true</property>
 
-		<!-- Inserir os registros  validate create dentro das tabelas -->
-		<!-- Inserir os registros dentro das tabelas -->
-		<property name="hbm2ddl.auto">create</property>
+		<!-- crear as tabelas create -->
+			<!-- inserir dentro das tabelas validate -->
+		 
 		
 		
-			<mapping class="br.com.fruteira.domain.Cliente"/>
+		<property name="hbm2ddl.auto">validate</property>
+		
+		<!-- Mapeamento das tabelas -->
+			
+			<mapping class="br.com.fruteira.domain.Cidade" />
+			<mapping class="br.com.fruteira.domain.Cliente" />
+			<mapping class="br.com.fruteira.domain.Estado" />
+			<mapping class="br.com.fruteira.domain.Fornecedor" />
+			<mapping class="br.com.fruteira.domain.Funcionario" />
+			<mapping class="br.com.fruteira.domain.ItemVenda" />
+			<mapping class="br.com.fruteira.domain.Pessoa" />
+			<mapping class="br.com.fruteira.domain.Produto" />
+			<mapping class="br.com.fruteira.domain.Usuario" />
+			<mapping class="br.com.fruteira.domain.Venda" />
 			
 		
-		
-			
 	</session-factory>
 
 </hibernate-configuration>

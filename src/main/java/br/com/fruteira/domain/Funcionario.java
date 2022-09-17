@@ -20,14 +20,6 @@ public class Funcionario extends GenericDomain {
 	@Temporal(TemporalType.DATE)
 	private Date dataAdmissao;
 	
-	@Column(nullable = false)
-	@Temporal(TemporalType.DATE)
-	private Date dataFerias;
-	
-	
-	@Column(nullable = false)
-	@Temporal(TemporalType.DATE)
-	private Date dataDemissao;
 	
 	
 	@OneToOne
@@ -50,20 +42,8 @@ public class Funcionario extends GenericDomain {
 		this.dataAdmissao = dataAdmissao;
 	}
 	
-	public Date getDataFerias() {
-		return dataFerias;
-	}
-	public void setDataFerias(Date dataFerias) {
-		this.dataFerias = dataFerias;
-	}
 	
-	public Date getDataDemissao() {
-		return dataDemissao;
-	}
-	public void setDataDemissao(Date dataDemissao) {
-		this.dataDemissao = dataDemissao;
-	}
-
+	
 	public Pessoa getPessoa() {
 		return pessoa;
 	}
@@ -71,6 +51,8 @@ public class Funcionario extends GenericDomain {
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
+	
+	
 }
 
 

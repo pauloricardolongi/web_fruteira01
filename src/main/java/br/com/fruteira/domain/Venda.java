@@ -21,6 +21,7 @@ public class Venda extends GenericDomain {
 	private BigDecimal precoTotal;
 	
 	@ManyToOne
+	@JoinColumn(nullable = false)
 	private Cliente cliente;
 	
 	@ManyToOne
