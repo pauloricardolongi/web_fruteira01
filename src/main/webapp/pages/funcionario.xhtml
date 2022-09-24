@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Funcionários</title>
+	<h:outputStylesheet library="css" name="estilo.css" />
+</h:head>
+<h:body>
+	<p:growl id="mensagem" />
+	<h:form id="formListagem">
+
+
+		<p:panel header="Consulta de Funcionários">
+			<p:dataTable emptyMessage="Nenhum registro encontrado."
+				paginator="true" value="#{funcionarioBean.funcionarios}" var="funcionario"
+				rows="6" id="tabela">
+				<f:facet name="header">
+					<p:commandButton value="Novo" oncomplete="PF('dialogo').show();"
+						actionListener="#{funcionarioBean.novo}"
+						update=":formCadastro:pnCadastro">
+						<f:actionListener
+							type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
+					</p:commandButton>
+					
+				</f:facet>
+
+				<p:column headerText="Código" sortBy="#{funcionario.codigo}"
+				filterBy="#{funcionario.codigo}">
+					<h:outputText value="#{funcionario.codigo}" />
+				</p:column>
+
+				<p:column headerText="Carteira de Trabalho" sortBy="#{funcionario.carteiraTrabalho}"
+				filterBy="#{funcionario.carteiraTrabalho}">					
+					<h:outputText value="#{funcionario.carteiraTrabalho}" />
+				</p:column>
+				
+				<p:column headerText="Admissao- busca por ano" sortBy="#{funcionario.dataAdmissao}"
+				filterBy="#{funcionario.dataAdmissao}">					
+					<h:outputText value="#{funcionario.dataAdmissao}" />
+				</p:column>
+
+
+				<p:column headerText="Opções">
+					<p:commandButton icon="ui-icon-trash"
+						actionListener="#{fornecedorBean.excluir}"
+						update=":mensagem :formListagem:tabela">
+						<p:confirm header="Confirmação" message="Deseja excluir?"
+							icon="ui-icon-alert" />
+						<f:attribute name="fornecedorSelecionado" value="#{fornecedor}" />
+					</p:commandButton>
+
+					<p:commandButton icon="ui-icon-pencil"
+						actionListener="#{fornecedorBean.editar}"
+						update=":mensagem :formCadastro:pnCadastro"
+						oncomplete="PF('dialogo').show();">
+						<f:attribute name="fornecedorSelecionado" value="#{fornecedor}" />
+						<f:actionListener
+							type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
+					</p:commandButton>
+
+
+				</p:column>
+
+			</p:dataTable>
+
+			<p:confirmDialog global="true">
+				<p:commandButton value="Sim" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+
+		</p:panel>
+	</h:form>
+
+	
+
+	<p:dialog header="Fornecedor - Cadastro" widgetVar="dialogo"
+		draggable="false" resizable="false" modal="true" closable="false">
+
+		<h:form id="formCadastro">
+
+			<p:panelGrid columns="2" id="pnCadastro">
+
+				<p:outputLabel value="Descrição:" />
+				<p:inputText maxlength="50" size="30"
+					value="#{fornecedorBean.fornecedor.descricao}" required="true"
+					requiredMessage="O campo 'Nome' é obrigatório" />
+
+				
+
+			</p:panelGrid>
+			<p:panelGrid columns="2">
+				<p:commandButton value="Salvar"
+					actionListener="#{fornecedorBean.salvar()}"
+					update=":mensagem :formCadastro:pnCadastro :formListagem:tabela" />
+				<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" />
+
+			</p:panelGrid>
+
+		</h:form>
+
+	</p:dialog>
+
+</h:body>
+</html>

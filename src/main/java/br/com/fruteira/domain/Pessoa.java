@@ -3,6 +3,7 @@ package br.com.fruteira.domain;
 
 import javax.persistence.Column;
 
+
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -28,6 +29,10 @@ public class Pessoa extends GenericDomain {
 	@Column(nullable = false)
 	private Short numero;
 	
+
+	
+	
+	
 	@Column(length = 30, nullable = false)
 	private String bairro;
 	
@@ -36,6 +41,7 @@ public class Pessoa extends GenericDomain {
 	
 	@Column(length = 14, nullable = false)
 	private String cpf;
+	
 	
 	
 	
@@ -89,6 +95,7 @@ public class Pessoa extends GenericDomain {
 	public void setNumero(Short numero) {
 		this.numero = numero;
 	}
+	
 
 	public String getBairro() {
 		return bairro;

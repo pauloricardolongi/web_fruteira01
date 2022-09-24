@@ -33,11 +33,13 @@
 			<!-- inserir dentro das tabelas validate -->
 		 
 		
-		
-		<property name="hbm2ddl.auto">validate</property>
+		<!-- create, criar as tabelas -->
+		<!-- validate, validar dados -->
+		<!-- update, atualizar tabela -->
+		<property name="hbm2ddl.auto">update</property>
 		
 		<!-- Mapeamento das tabelas -->
-			
+			<mapping class="br.com.fruteira.domain.Pessoa" />
 			<mapping class="br.com.fruteira.domain.Cidade" />
 			<mapping class="br.com.fruteira.domain.Cliente" />
 			<mapping class="br.com.fruteira.domain.Estado" />

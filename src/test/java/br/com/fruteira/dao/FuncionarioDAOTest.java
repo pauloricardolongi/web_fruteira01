@@ -16,10 +16,10 @@ public class FuncionarioDAOTest {
 	
 	
 @Test
-@Ignore
+
 	public void salvar() throws ParseException{
 		PessoaDAO pessoaDAO = new PessoaDAO();
-		Pessoa pessoa = pessoaDAO.buscar(4L);
+		Pessoa pessoa = pessoaDAO.buscar(2L);
 		
 		System.out.println("Pessoa Encontrada");
 		System.out.println("Nome: " + pessoa.getNome());
@@ -29,8 +29,8 @@ public class FuncionarioDAOTest {
 		
 		Funcionario funcionario= new Funcionario();
 		funcionario.setPessoa(pessoa);
-		funcionario.setCarteiraTrabalho("ab2222vc");
-		funcionario.setDataAdmissao(new SimpleDateFormat("dd/MM/yyyy").parse("15/09/2022"));
+		funcionario.setCarteiraTrabalho("aa34444b");
+		funcionario.setDataAdmissao(new SimpleDateFormat("dd/MM/yyyy").parse("24/09/2022"));
 
 		
 		FuncionarioDAO funcionarioDAO   = new FuncionarioDAO();
