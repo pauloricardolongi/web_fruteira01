@@ -2,11 +2,13 @@ package br.com.fruteira.dao;
 
 import java.text.ParseException;
 
+
 import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.junit.Ignore;
 import org.junit.Test;
+
 
 import br.com.fruteira.domain.Funcionario;
 import br.com.fruteira.domain.Pessoa;
@@ -16,10 +18,11 @@ public class FuncionarioDAOTest {
 	
 	
 @Test
+@Ignore
 
 	public void salvar() throws ParseException{
 		PessoaDAO pessoaDAO = new PessoaDAO();
-		Pessoa pessoa = pessoaDAO.buscar(2L);
+		Pessoa pessoa = pessoaDAO.buscar(25L);
 		
 		System.out.println("Pessoa Encontrada");
 		System.out.println("Nome: " + pessoa.getNome());
@@ -29,8 +32,8 @@ public class FuncionarioDAOTest {
 		
 		Funcionario funcionario= new Funcionario();
 		funcionario.setPessoa(pessoa);
-		funcionario.setCarteiraTrabalho("aa34444b");
-		funcionario.setDataAdmissao(new SimpleDateFormat("dd/MM/yyyy").parse("24/09/2022"));
+		funcionario.setCarteiraTrabalho("vv34444ww");
+		funcionario.setDataAdmissao(new SimpleDateFormat("dd/MM/yyyy").parse("25/09/2022"));
 
 		
 		FuncionarioDAO funcionarioDAO   = new FuncionarioDAO();
@@ -42,7 +45,7 @@ public class FuncionarioDAOTest {
 	@Test
 	@Ignore
 	public void buscar(){
-	Long codigo = 6L;
+	Long codigo = 1L;
 	
 	FuncionarioDAO funcionarioDAO  = new FuncionarioDAO();
 	Funcionario funcionario = funcionarioDAO.buscar(codigo);
@@ -62,6 +65,7 @@ public class FuncionarioDAOTest {
 	}
 	@Test
 	@Ignore
+	
 	public void listar() {
 		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 		List<Funcionario> resultado = funcionarioDAO.listar();
@@ -80,7 +84,10 @@ public class FuncionarioDAOTest {
 	}
 	
 	
-}
+		
+	}
+	
+
 	
 
 

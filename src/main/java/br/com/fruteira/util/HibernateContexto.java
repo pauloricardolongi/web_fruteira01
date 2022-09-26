@@ -1,6 +1,7 @@
 package br.com.fruteira.util;
 
 import javax.servlet.ServletContextEvent;
+
 import javax.servlet.ServletContextListener;
 
 public class HibernateContexto implements ServletContextListener {

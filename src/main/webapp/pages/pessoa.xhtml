@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Pessoas</title>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui"
+template="/templates/template.xhtml"
+>
+
+
+<ui:define name="conteudo">
 	
-	<h:outputStylesheet library="css" name="estilo.css" />
-</h:head>
-
-
-
-<h:body>
-	<p:growl id="mensagem" />
-
 	<h:form id="formListagem">
 		<p:panel header="Lista de Pessoas">
 				<p:dataTable id="tabela" emptyMessage="Nenhum registro encontrado."
@@ -37,25 +32,11 @@
 				<p:column headerText="CPF">
 					<h:outputText value="#{pessoa.cpf}" />
 				</p:column>
-
-				<p:column headerText="Opções">
-					<p:commandButton icon="ui-icon-trash"
-						actionListener="#{pessoaBean.excluir}"
-						update=":mensagem :formListagem:tabela">
-						<p:confirm header="Confirmação" message="Deseja excluir a pessoa?"
-							icon="ui-icon-alert" />
-						<f:attribute name="pessoaSelecionada" value="#{pessoa}" />
-					</p:commandButton>
-
-					<p:commandButton icon="ui-icon-pencil"
-						actionListener="#{pessoaBean.editar}"
-						update=":mensagem :formCadastro:painel"
-						oncomplete="PF('dialogo').show();">
-						<f:attribute name="pessoaSelecionada" value="#{pessoa}" />
-						<f:actionListener
-							type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
-					</p:commandButton>
+				
+				<p:column headerText="Email">
+					<h:outputText value="#{pessoa.email}" />
 				</p:column>
+
 			</p:dataTable>
 
 			<p:confirmDialog global="true">
@@ -68,7 +49,7 @@
 	</h:form>
 
 	<p:dialog header="Pessoas - Cadastro" widgetVar="dialogo"
-		draggable="false" resizable="false" modal="true" closable="false">
+		draggable="false" resizable="false" global="true" closable="false">
 		<h:form id="formCadastro">
 			<h:panelGrid id="painel" columns="2">
 				<p:outputLabel for="nome" value="Nome:" />
@@ -82,6 +63,8 @@
 				<p:inputMask id="cpf" mask="999.999.999-99" size="10"
 					value="#{pessoaBean.pessoa.cpf}" required="true"
 					requiredMessage="O campo 'CPF' é obrigatório" />
+					
+					
 
 				<p:outputLabel for="estado" value="Estado:" />
 				<p:selectOneMenu id="estado" filter="true"
@@ -152,6 +135,6 @@
 			</h:panelGrid>
 		</h:form>
 	</p:dialog>
-</h:body>
-</html>
+</ui:define>
+</ui:composition>
 

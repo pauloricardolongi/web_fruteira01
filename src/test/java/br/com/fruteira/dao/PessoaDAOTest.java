@@ -8,7 +8,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import br.com.fruteira.domain.Cidade;
-
+import br.com.fruteira.domain.Funcionario;
 import br.com.fruteira.domain.Pessoa;
 
 public class PessoaDAOTest {
@@ -52,7 +52,7 @@ public void listar() {
 @Test
 @Ignore
 public void buscar(){
-	Long codigo = 6L;
+	Long codigo = 3L;
 	
 	PessoaDAO pessoaDAO = new PessoaDAO();
 	Pessoa pessoa = pessoaDAO.buscar(codigo);
@@ -65,5 +65,21 @@ public void buscar(){
 		System.out.println( " CPF: " +pessoa.getCpf() + ",  email: " + pessoa.getEmail());
 	}
 	
+}
+@Test
+@Ignore
+public void excluir(){
+	Long codigo = 3L;
+	PessoaDAO pessoaDAO = new PessoaDAO();
+	Pessoa pessoa = pessoaDAO.buscar(codigo);
+	
+	if(pessoa == null){
+		System.out.println("Nenhum registro da pessoa encontrado");
+	}else{
+		pessoaDAO.excluir(pessoa);
+		System.out.println("Registro removido:");
+		System.out.println("Código " + pessoa.getCodigo() + " - " + pessoa.getNome()
+		+ " - " + pessoa.getEmail() + " - " + pessoa.getCidade());
+	}
 }
 }
