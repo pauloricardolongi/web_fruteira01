@@ -52,6 +52,9 @@ template="/templates/template.xhtml"
 							message="Deseja excluir o produto?" icon="ui-icon-alert" />
 						<f:attribute name="produtoSelecionado" value="#{produto}" />
 					</p:commandButton>
+					
+					
+					
 
 					<p:commandButton icon="ui-icon-pencil"
 						actionListener="#{produtoBean.editar}"
@@ -74,8 +77,8 @@ template="/templates/template.xhtml"
 	</h:form>
 
 	<p:dialog header="Produtos - Cadastro" widgetVar="dialogo"
-		draggable="false" resizable="false" global="true" closable="false">
-		<h:form id="formCadastro">
+		draggable="true" resizable="false" global="true" closable="false">
+		<h:form id="formCadastro" enctype="multipart/form-data">
 			<h:panelGrid id="painel" columns="2">
 				<p:outputLabel value="Descrição:" />
 				<p:inputText maxlength="50" size="30"
@@ -111,15 +114,30 @@ template="/templates/template.xhtml"
 					<f:selectItems value="#{produtoBean.fornecedor}" var="fornecedor"
 						itemValue="#{fornecedor}" itemLabel="#{fornecedor.descricao}" />
 				</p:selectOneMenu>
+				
+				<p:outputLabel value="Imagem" for="upload"/>
+				<p:fileUpload id="upload" mode="advanced" 
+				fileUploadListener="#{produtoBean.upload}"
+				update=":mensagem :formCadastro:foto"
+				auto="true" /> 
+				
+				<p:outputLabel value="Foto" for="foto"/>
+				<p:graphicImage id="foto" value="#{imageBean.foto}"> 
+				<f:param name="caminho" value="#{produtoBean.produto.caminho}"/> 
+								
+				</p:graphicImage>
+				
 
 			</h:panelGrid>
 
 			<h:panelGrid columns="2">
 				<p:commandButton value="Salvar"
-					actionListener="#{produtoBean.salvar}"
+					actionListener="#{produtoBean.salvar()}"
 					update=":mensagem :formCadastro:painel :formListagem:tabela" />
 				<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" />
 			</h:panelGrid>
+			
+			
 		</h:form>
 	</p:dialog>
 

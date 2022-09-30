@@ -6,6 +6,7 @@ import java.util.List;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import br.com.fruteira.domain.Cidade;
 import br.com.fruteira.domain.Fornecedor;
 import br.com.fruteira.domain.Pessoa;
 import br.com.fruteira.domain.Produto;
@@ -19,9 +20,9 @@ public class ProdutoDAOTest {
 		
 		
 		Produto produto = new Produto();
-		produto.setDescricao("alface-muda");
+		produto.setDescricao("pera");
 		produto.setFornecedor(fornecedor);
-		produto.setPreco(new BigDecimal("3.70"));
+		produto.setPreco(new BigDecimal("10.70"));
 		produto.setQuantidade(new Short("10"));
 		
 		ProdutoDAO produtoDAO = new ProdutoDAO();
@@ -46,9 +47,10 @@ public class ProdutoDAOTest {
 		}
 		}
 	@Test
+	@Ignore
 	
 	public void buscar(){
-		Long codigo = 1L;
+		Long codigo = 2L;
 		
 		ProdutoDAO produtoDAO = new ProdutoDAO();
 		Produto produto = produtoDAO.buscar(codigo);
@@ -63,5 +65,25 @@ public class ProdutoDAOTest {
 		}
 		
 	}
+	@Test
+	
+	public void excluir(){
+		Long codigo = 19L;
+		
+		ProdutoDAO produtoDAO = new ProdutoDAO();
+		Produto produto = produtoDAO.buscar(codigo);
+		
+		produtoDAO.excluir(produto);
+		
+		System.out.println("produto Removida");
+		System.out.println("Código do produto: " + produto.getCodigo());
+		System.out.println("descrição produto: " + produto.getDescricao());
+		System.out.println("preço produto: " + produto.getPreco());
+		System.out.println("quantidade produto: " + produto.getQuantidade());
+		System.out.println("Código do fornecedor: " + produto.getFornecedor().getCodigo());
+		System.out.println("descrição fornecedor: " +  produto.getFornecedor().getDescricao());
+		
+	}
+	
 	}
 

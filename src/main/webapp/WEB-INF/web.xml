@@ -28,5 +28,11 @@
     <listener-class>br.com.fruteira.util.HibernateContexto</listener-class>
     
     </listener>
+    
+   <!-- DOCUMENTAÇÃO DO UPLOAD -->  
+<context-param>
+<param-name>primefaces.UPLOADER</param-name>
+<param-value>native</param-value>
+ </context-param>
 	
 </web-app>
